@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FotoservisService } from '../services/fotoservis.service';
+import { NavController, NavParams } from '@ionic/angular'; 
+
 
 @Component({
   selector: 'app-tab3',
@@ -8,9 +10,13 @@ import { FotoservisService } from '../services/fotoservis.service';
 })
 export class Tab3Page {
 
-  constructor(public fotoservice : FotoservisService) {}
+  constructor(public fotoservice : FotoservisService, public pindahHal: NavController) {}
 
   async ionViewDidEnter(){
     this.fotoservice.loadFotoFromFirestorage();
+  }
+
+  gotoTab4(){
+    this.pindahHal.navigateForward(["tab4"]);
   }
 }
