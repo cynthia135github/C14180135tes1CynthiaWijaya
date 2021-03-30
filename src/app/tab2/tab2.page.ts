@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Plugins } from '@capacitor/core';
 import { FotoservisService } from '../services/fotoservis.service';
+
+const { Storage } = Plugins;
 
 export interface PhotoUpload{
   filePath : string;
@@ -12,6 +15,7 @@ export interface PhotoUpload{
 })
 export class Tab2Page {
 
+  private keyLocalStorage : string = "foto";
   constructor(public fotoservice : FotoservisService) {}
 
   ionViewDidEnter(){
@@ -23,6 +27,12 @@ export class Tab2Page {
 
     this.fotoservice.uploadtoFirestorage(counter);
 
+    this.fotoservice.dataFotoLokal.splice(counter, 1);
+
+    Storage.set({
+      key : this.keyLocalStorage,
+      value : JSON.stringify(this.fotoservice.dataFotoLokal)
+    })
     //document.getElementById("uploadbutton"+counter).setAttribute('disabled','true');
   }
 
