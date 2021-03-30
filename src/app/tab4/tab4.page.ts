@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FotoservisService } from '../services/fotoservis.service';
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  constructor(public fotoservice : FotoservisService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.fotoservice.loadFotoFromFirestorage();
+    this.fotoservice.loadLocalPhotos();
   }
 
 }

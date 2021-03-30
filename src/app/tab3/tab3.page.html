@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      List Photos
+      List Photos From Firestorage
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,4 +20,10 @@
       </ion-col>
     </ion-row>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="gotoTab4()">
+      Page 4
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
