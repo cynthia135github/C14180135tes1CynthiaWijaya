@@ -22,6 +22,8 @@ export class Tab2Page {
     console.log("foto yg mau diupload: "+counter);
 
     this.fotoservice.uploadtoFirestorage(counter);
+
+    //document.getElementById("uploadbutton"+counter).setAttribute('disabled','true');
   }
 
   addNewFoto(){

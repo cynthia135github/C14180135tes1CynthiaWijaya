@@ -13,7 +13,7 @@
         <ion-card>
           <ion-img [src]="fotolokal.webviewPath"></ion-img>
           <ion-card-content>
-            <ion-button (click)="uploadFoto(counter)" color="warning" size="small" shape="round">
+            <ion-button  [disabled]="false"  (click)="uploadFoto(counter)" color="warning" size="small" shape="round">
              Upload 
             </ion-button>
           </ion-card-content>

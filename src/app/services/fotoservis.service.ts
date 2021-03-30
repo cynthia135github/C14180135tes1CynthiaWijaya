@@ -146,4 +146,39 @@ export class FotoservisService {
 
   }
 
+  public async loadFotoFromFirestorage(){
+      this.dataFotoUpload = [];
+
+      
+      var refImage = this.firestorage.storage.ref('images');
+      refImage.listAll()
+        .then((res) => {
+          res.items.forEach((itemRef) => {
+            itemRef.getDownloadURL().then(url => {
+              console.log(url);
+
+              var arrnamafile = itemRef.fullPath.split("/"); 
+              var namafile= arrnamafile[arrnamafile.length - 1]; 
+              console.log("nama filenya dr storage =>"+namafile);
+
+              var ambilfoto = {
+                urlImage : url,
+                namefile : namafile
+              }
+
+              this.dataFotoUpload.unshift(ambilfoto);
+            })
+          });
+
+         
+          Storage.set({
+            key : this.keyUploadedStorage,
+            value : JSON.stringify(this.dataFotoUpload)
+          });
+        }).catch((error) => {
+        console.log(error);
+      });
+    
+  }
+
 }
